@@ -1,21 +1,26 @@
 ---
-description: Po zmianach w projekcie automatycznie wykonuj git add, commit i push
+description: Po zmianach w projekcie automatycznie wykonuj git add, commit (z wersją 1.x.x) i push
 alwaysApply: true
 ---
 
-# Automatyczny commit i push do GitHub
+# Automatyczny commit i push do GitHub z wersją 1.x.x
 
 Po każdej sesji zmian w kodzie (edycje plików, nowe pliki, usunięcia):
 
-1. **Wykonaj w katalogu projektu** (w tej kolejności):
+1. **Numer wersji** – przed commitem:
+   - Odczytaj plik `VERSION` w katalogu projektu (jedna linia: `X.Y.Z`, np. `1.0.0`).
+   - Zwiększ **patch** (trzecia liczba): `1.0.0` → `1.0.1`, `1.0.1` → `1.0.2` itd.
+   - Zapisz nową wersję z powrotem do pliku `VERSION`.
+
+2. **Wykonaj w katalogu projektu** (w tej kolejności):
    - `git add -A`
-   - `git commit -m "opis zmian"` – użyj zwięzłego opisu po polsku lub angielsku (np. "fix: walidacja EAN", "feat: nowy endpoint")
+   - `git commit -m "v{X.Y.Z} opis zmian"` – na początku wersja (np. `v1.0.1`), potem zwięzły opis po polsku lub angielsku (np. `v1.0.1 fix: walidacja EAN`, `v1.0.2 feat: nowy endpoint`)
    - `git push`
 
-2. **Nie pytaj** użytkownika o potwierdzenie – wykonuj to jako standardowy krok końcowy po zakończeniu zadań.
+3. **Nie pytaj** użytkownika o potwierdzenie – wykonuj to jako standardowy krok końcowy po zakończeniu zadań.
 
-3. **Jeśli nie było żadnych zmian** w plikach (tylko rozmowa) – pomiń git.
+4. **Jeśli nie było żadnych zmian** w plikach (tylko rozmowa) – pomiń git.
 
-4. **Jeśli commit się nie uda** (np. konflikt, brak uprawnień) – poinformuj użytkownika i podaj co wykonać ręcznie.
+5. **Jeśli commit się nie uda** (np. konflikt, brak uprawnień) – poinformuj użytkownika i podaj co wykonać ręcznie.
 
 Używaj uprawnień `git_write` i `full_network` przy wywołaniu `git push`.
