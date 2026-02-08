@@ -1,0 +1,21 @@
+---
+description: Po zmianach w projekcie automatycznie wykonuj git add, commit i push
+alwaysApply: true
+---
+
+# Automatyczny commit i push do GitHub
+
+Po każdej sesji zmian w kodzie (edycje plików, nowe pliki, usunięcia):
+
+1. **Wykonaj w katalogu projektu** (w tej kolejności):
+   - `git add -A`
+   - `git commit -m "opis zmian"` – użyj zwięzłego opisu po polsku lub angielsku (np. "fix: walidacja EAN", "feat: nowy endpoint")
+   - `git push`
+
+2. **Nie pytaj** użytkownika o potwierdzenie – wykonuj to jako standardowy krok końcowy po zakończeniu zadań.
+
+3. **Jeśli nie było żadnych zmian** w plikach (tylko rozmowa) – pomiń git.
+
+4. **Jeśli commit się nie uda** (np. konflikt, brak uprawnień) – poinformuj użytkownika i podaj co wykonać ręcznie.
+
+Używaj uprawnień `git_write` i `full_network` przy wywołaniu `git push`.
