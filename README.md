@@ -49,6 +49,19 @@ Frontend: `http://localhost:3000`. API w Pythonie: `api/batch_search.py`, `api/s
 
 Deploy na Vercel: połącz repozytorium, ustaw zmienne środowiskowe (ANTHROPIC_API_KEY, SERPAPI_API_KEY itd.). Build: Next.js; funkcje Python z folderu `api/` są automatycznie wdrażane.
 
+### Vercel Password Protection
+
+Ochrona hasłem (dla użytku wewnętrznego) włącza się w panelu Vercel – bez zmian w kodzie. Dostępna na planie **Enterprise** lub z add-onem **Advanced Deployment Protection** na planie Pro ([docs](https://vercel.com/docs/deployment-protection/methods-to-protect-deployments/password-protection)).
+
+1. W [Vercel Dashboard](https://vercel.com/dashboard) wybierz projekt **PhotoGenSeo**.
+2. **Settings** → **Deployment Protection**.
+3. W sekcji **Password Protection**:
+   - Włącz toggle.
+   - Wybierz środowisko (Production, Preview lub oba).
+   - Wpisz hasło i kliknij **Save**.
+
+Odwiedzający deployment muszą podać hasło (raz na dany URL – Vercel ustawia ciasteczko). Zmiana hasła wymaga ponownego logowania.
+
 ## Uruchomienie CLI
 
 ```bash
